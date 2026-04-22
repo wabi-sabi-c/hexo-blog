@@ -5,6 +5,7 @@ tags: [Linux, CentOS7, VMware, FinalShell]
 categories: [自学记录]
 ---
 
+
 # Day01｜从零搭建CentOS7虚拟机 + FinalShell远程连接
 
 今天是运维自学 180 天计划的第一天，任务非常明确：
@@ -73,12 +74,13 @@ ping www.baidu.com # 能连通说明正常
 5. 用户 root，密码是你设置的
 6. 连接成功，后续操作全部在这里进行
 
-## 六、Day01 必学 5 条Linux基础命令
+## 六、Day01 必学 6 条Linux基础命令
 1. `pwd`：查看当前目录 （print working directory）
 2. `ls`：查看当前目录下的文件 （list）
 3. `cd`：进入指定目录 （change directory）
 4. `mkdir test`：创建test文件夹 （make directory）
 5. `rm -rf test`：强制删除test文件夹及以内的所有文件（很危险删除就无法恢复）（remove directory）
+6. `man 命令`：获取命令的使用说明
 
 ## 七、今日合格标准（自测）
 1. 虚拟机成功安装 CentOS7

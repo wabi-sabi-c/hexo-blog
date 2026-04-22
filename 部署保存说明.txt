@@ -1,0 +1,10 @@
+保存：git add . && git commit -m "更新文章" && git push
+git add . → 保存所有文章 / 配置
+git commit -m "更新文章" → 提交备份
+git push → 上传到 GitHub 源码仓库（安全）
+
+部署: hexo clean && hexo g && hexo d
+hexo clean → 清理缓存
+hexo g → 生成网页静态文件
+hexo d → 部署到网上
+
