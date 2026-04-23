@@ -20,15 +20,15 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"wabi-sabi-c.github.io","root":"/","images":"/images","scheme":"Mist","darkmode":true,"version":"8.27.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"hide","padding":18,"offset":18,"width":300,"align":"left"},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"mac"},"fold":{"enable":true,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/js/config.js" defer></script>
 
-    <meta name="description" content="Day02｜Linux 目录与文件常用命令（必背版）今天是 180 天运维自学计划的第二天，我们正式开始 Linux 最核心的内容：文件与目录操作。这部分是 Linux 的基础中的基础，必须熟练到肌肉记忆。 一、Linux目录结构Linux 一切皆文件，目录结构如下：  \: 根目录,所有文件和目录的根（起点），也叫根目录。 &#x2F;root: 根目录的子目录及root用户目录 &#x2F;home: 普通用户目">
+    <meta name="description" content="Day02｜Linux 目录与文件常用命令（必背版）今天是 180 天运维自学计划的第二天，我们正式开始 Linux 最核心的内容：文件与目录操作。这部分是 Linux 的基础中的基础，必须熟练到肌肉记忆。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Day02 Linux 目录与文件常用命令(必背)">
 <meta property="og:url" content="https://wabi-sabi-c.github.io/2026/04/22/Day02-Linux-%E6%96%87%E4%BB%B6%E4%B8%8E%E7%9B%AE%E5%BD%95%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4-%E5%BF%85%E8%83%8C/index.html">
 <meta property="og:site_name" content="侘寂的小站">
-<meta property="og:description" content="Day02｜Linux 目录与文件常用命令（必背版）今天是 180 天运维自学计划的第二天，我们正式开始 Linux 最核心的内容：文件与目录操作。这部分是 Linux 的基础中的基础，必须熟练到肌肉记忆。 一、Linux目录结构Linux 一切皆文件，目录结构如下：  \: 根目录,所有文件和目录的根（起点），也叫根目录。 &#x2F;root: 根目录的子目录及root用户目录 &#x2F;home: 普通用户目">
+<meta property="og:description" content="Day02｜Linux 目录与文件常用命令（必背版）今天是 180 天运维自学计划的第二天，我们正式开始 Linux 最核心的内容：文件与目录操作。这部分是 Linux 的基础中的基础，必须熟练到肌肉记忆。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-04-22T04:51:55.000Z">
-<meta property="article:modified_time" content="2026-04-22T09:00:49.564Z">
+<meta property="article:modified_time" content="2026-04-23T07:38:40.351Z">
 <meta property="article:author" content="wabi-sabi-c">
 <meta property="article:tag" content="Linux">
 <meta name="twitter:card" content="summary">
@@ -174,7 +174,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-count">9</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -286,6 +286,7 @@
     
     
     <div class="post-body" itemprop="articleBody"><h1 id="Day02｜Linux-目录与文件常用命令（必背版）"><a href="#Day02｜Linux-目录与文件常用命令（必背版）" class="headerlink" title="Day02｜Linux 目录与文件常用命令（必背版）"></a>Day02｜Linux 目录与文件常用命令（必背版）</h1><p>今天是 180 天运维自学计划的第二天，我们正式开始 Linux 最核心的内容：<strong>文件与目录操作</strong>。<br>这部分是 Linux 的基础中的基础，必须熟练到肌肉记忆。</p>
+<span id="more"></span>
 <h2 id="一、Linux目录结构"><a href="#一、Linux目录结构" class="headerlink" title="一、Linux目录结构"></a>一、Linux目录结构</h2><p>Linux 一切皆文件，目录结构如下：</p>
 <ul>
 <li><code>\</code>: 根目录,所有文件和目录的根（起点），也叫根目录。</li>
@@ -298,7 +299,7 @@
 <li><code>/tmp</code>: 临时文件目录</li>
 <li><code>/usr</code>: 用户软件安装目录</li>
 <li><code>/lib</code>: 系统库文件目录</li>
-<li>等等<span id="more"></span></li>
+<li>等等</li>
 </ul>
 <h2 id="二、Linux-目录操作"><a href="#二、Linux-目录操作" class="headerlink" title="二、Linux 目录操作"></a>二、Linux 目录操作</h2><h3 id="1-切换目录-cd-（change-directory）"><a href="#1-切换目录-cd-（change-directory）" class="headerlink" title="1.切换目录 cd （change directory）"></a>1.切换目录 <code>cd</code> （change directory）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /root <span class="comment"># 切换到/root目录</span></span><br><span class="line"><span class="built_in">cd</span> ~     <span class="comment"># 切换到当前用户目录</span></span><br><span class="line"><span class="built_in">cd</span> -     <span class="comment"># 退回上一次所在目录</span></span><br><span class="line"><span class="built_in">cd</span> ..    <span class="comment"># 退回上一级目录</span></span><br></pre></td></tr></table></figure>
 
@@ -385,13 +386,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">6k</span>
+    <span title="站点总字数">7k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">23 分钟</span>
+    <span title="站点阅读时长">26 分钟</span>
   </span>
 </div>
 
