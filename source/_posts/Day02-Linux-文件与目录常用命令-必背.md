@@ -22,7 +22,7 @@ Linux 一切皆文件，目录结构如下：
 - `/usr`: 用户软件安装目录
 - `/lib`: 系统库文件目录
 - 等等
-
+<!-- more -->
 ## 二、Linux 目录操作
 
 ### 1.切换目录 `cd` （change directory）

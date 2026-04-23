@@ -16,7 +16,7 @@ categories: [自学记录]
 - 虚拟机软件：VMware Workstation
 - 系统镜像：CentOS-7-x86_64-Minimal.iso（最小化安装版足够）
 - 远程工具：FinalShell
-
+<!-- more -->
 ## 二、新建虚拟机关键配置（照着填不出错）
 1. 安装 → 稍后安装操作系统
 2. 选择 Linux → CentOS 64 位
@@ -47,6 +47,7 @@ ping www.baidu.com # 能连通说明正常
 使用`ip addr`命令查看 IP 地址，使用`ping`命令测试百度是否正常。
 ### 4.1 `ip addr`使用后内容解释
 ```bash
+ens33: 大多数CentOS7虚拟机默认网卡名称
 一、 inet xxx.xxx.xxx.xxx/24 brd xxx.xxx.xxx.xxx scope global noprefixroute dynamic
   inet：表示一个IP4地址
   xxx.xxx.xxx.xxx：表示 IP 地址
