@@ -1,0 +1,13 @@
+# 作用：防止把垃圾文件、大文件推到源码仓库，避免换电脑报错
+# Hexo 自动生成文件
+public/
+.deploy_git/
+db.json
+debug.log
+
+# 依赖包（不需要提交）
+node_modules/
+
+# 系统垃圾文件
+.DS_Store
+Thumbs.db
