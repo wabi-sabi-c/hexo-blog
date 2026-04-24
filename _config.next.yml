@@ -14,22 +14,20 @@ scheme: Mist
 # 侧边栏
 sidebar:
   # display: remove       # 侧边栏不显示
-  display: hide         # 可选值：post（文章页显示）/ always（一直显示）/ hide（隐藏）
+  display: post # 可选值：post（文章页显示）/ always（一直显示）/ hide（隐藏）
   # padding: 18           # 侧边栏内边距
-  offset: 18            # 侧边栏外边距
-  width: 300            # 侧边栏宽度
-  align: left           # 侧边栏位置  
+  offset: 18 # 侧边栏外边距
+  width: 300 # 侧边栏宽度
+  align: left # 侧边栏位置
   # background: false     # 侧边栏背景
   # background_image: /images/sidebar-bg.jpg      # 侧边栏背景图片
 
 # 头像
 avatar:
-  
   url: /images/avatar.png
   # rounded: false
   rounded: true
   rotated: false
-
 
 social:
   GitHub: https://github.com/wabi-sabi-c || fab fa-github
@@ -37,9 +35,8 @@ social:
 social_icons:
   enable: true
   # icons_only: false   # 同时显示图标 + 文字
-  icons_only: true      # 只显示图标
-  transition: false     # 鼠标移入图标时，关闭图标旋转
-
+  icons_only: true # 只显示图标
+  transition: false # 鼠标移入图标时，关闭图标旋转
 
 # 导航菜单
 menu:
@@ -48,17 +45,16 @@ menu:
   # categories: /categories/ || fa fa-folder
   archives: /archives/ || fa fa-archive
   about: /about/ || fa fa-user
+  # English: /en/ || fa fa-language
 
 # 菜单设置
 menu_settings:
   icons: true
   badges: false
 
-
 # 文章目录
 post_toc:
   enable: false
-
 
 # 暗色模式
 # darkmode: false
@@ -66,31 +62,30 @@ darkmode: true
 
 # 页脚
 footer:
-  icon: 
-    name:''
+  icon: name:''
 
   since: 2026
-  powered: false    # 去掉 Hexo 标志
-  theme: false      # 去掉 NexT 标志
-  copyright: false  # 去掉版权信息
-  custom: '© 2026 wabi-sabi-c | 不完美，也很好 '  
+  powered: false # 去掉 Hexo 标志
+  theme: false # 去掉 NexT 标志
+  copyright: false # 去掉版权信息
+  custom: "© 2026 wabi-sabi-c | 不完美，也很好 "
 
 # 文章元信息
 post_meta:
-  item_text: false  # 开启元数据前面的文字标签，比如 “发布于”“更新于” 这些提示文字
+  item_text: false # 开启元数据前面的文字标签，比如 “发布于”“更新于” 这些提示文字
   created_at: true # 显示文章的创建时间（发布时间）
   updated_at:
-    enable: false   # 更新时间显示
+    enable: false # 更新时间显示
     another_day: true
   categories: true
 
 # 统计
 symbols_count_time:
-  separated_meta: false   # 让字数 / 阅读时间，和前面的发布时间、分类等信息分开显示（换行或分隔开）
-  item_text_total: false  # 显示“字数”
+  separated_meta: false # 让字数 / 阅读时间，和前面的发布时间、分类等信息分开显示（换行或分隔开）
+  item_text_total: false # 显示“字数”
 
 # 标签图标
-tag_icon: true  # 改成 true 就会用 NexT 自带的标签图标替代 #，看起来更美观
+tag_icon: true # 改成 true 就会用 NexT 自带的标签图标替代 #，看起来更美观
 
 # 移动端适应
 mobile_layout_economy: true
@@ -120,17 +115,23 @@ codeblock:
 back2top:
   enable: true
   # Back to top in sidebar.
-  sidebar: true     # 侧边栏显示
+  sidebar: false # 侧边栏显示
   # Scroll percent label in b2t button.
-  scrollpercent: true   # 显示滚动百分比
+  scrollpercent: true # 显示滚动百分比
 
-# `Follow me on GitHub` banner in the top-right corner.
-github_banner:
-  enable: true
-  permalink: https://github.com/wabi-sabi-c
+# # `Follow me on GitHub` banner in the top-right corner.
+# github_banner:
+#   enable: true
+#   permalink: https://github.com/wabi-sabi-c
 
 # Show multilingual switcher in footer.
-language_switcher: false
+language_switcher:
+  enable: true
+  position: header
+  sidebar: false  # 加上这一行，关闭底部/侧边栏的按钮
+  text:
+    zh-CN: 中文
+    en: English
 
 # 找到这部分配置，调整文章列表的间距
 index_posts:
@@ -141,14 +142,11 @@ index_posts:
 
 # 本地搜索
 local_search:
-  enable: true   # 开启本地搜索
-  trigger: auto  # 输入时自动触发搜索
-  top_n_per_article: 1  # 每篇文章显示的搜索结果数
+  enable: true # 开启本地搜索
+  trigger: auto # 输入时自动触发搜索
+  top_n_per_article: 1 # 每篇文章显示的搜索结果数
   unescape: false
   preload: false
-
-
-
 
 # 文章底部links
 # follow_me:

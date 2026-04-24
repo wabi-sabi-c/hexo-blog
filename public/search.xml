@@ -1,49 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Day06 Linux 进程管理(ps/top/kill)</title>
-    <url>/2026/04/23/Day06-Linux-%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86-ps-top-kill/</url>
-    <content><![CDATA[<h1 id="Day06｜Linux-进程管理（ps-top-kill-必学）"><a href="#Day06｜Linux-进程管理（ps-top-kill-必学）" class="headerlink" title="Day06｜Linux 进程管理（ps&#x2F;top&#x2F;kill 必学）"></a>Day06｜Linux 进程管理（ps&#x2F;top&#x2F;kill 必学）</h1><p>今天是 180 天运维自学计划第 6 天，学习 <strong>Linux 进程管理</strong>。<br>以后排查卡慢、杀服务、看负载，全靠这几个命令。</p>
-<h2 id="一、什么是进程？"><a href="#一、什么是进程？" class="headerlink" title="一、什么是进程？"></a>一、什么是进程？</h2><p>简单说：<br><strong>正在运行的程序 &#x3D; 进程</strong><br>每个进程都有一个唯一编号：<strong>PID</strong></p>
-<span id="more"></span>
-<h2 id="二、查看进程-ps（最常用）"><a href="#二、查看进程-ps（最常用）" class="headerlink" title="二、查看进程 ps（最常用）"></a>二、查看进程 ps（最常用）</h2><h3 id="1-查看当前用户进程"><a href="#1-查看当前用户进程" class="headerlink" title="1. 查看当前用户进程"></a>1. 查看当前用户进程</h3><p><code>ps</code></p>
-<h3 id="2-查看所有进程"><a href="#2-查看所有进程" class="headerlink" title="2. 查看所有进程"></a>2. 查看所有进程</h3><p><code>ps -ef</code></p>
-<h3 id="3-带详细资源显示"><a href="#3-带详细资源显示" class="headerlink" title="3. 带详细资源显示"></a>3. 带详细资源显示</h3><p><code>ps aux</code></p>
-<h3 id="4-过滤某个进程（实战常用）"><a href="#4-过滤某个进程（实战常用）" class="headerlink" title="4. 过滤某个进程（实战常用）"></a>4. 过滤某个进程（实战常用）</h3><p><code>ps -ef | grep mysql</code></p>
-<blockquote>
-<p>PID：进程 ID  UID：进程用户 ID  PPID：父进程 ID  CMD：进程名字</p>
-</blockquote>
-<h2 id="三、实时监控进程-top"><a href="#三、实时监控进程-top" class="headerlink" title="三、实时监控进程 top"></a>三、实时监控进程 top</h2><p><code>top</code>  退出按：<code>q</code></p>
-<blockquote>
-<p>PID 进程 ID  %CPU CPU 占用  %MEM 内存占用  COMMAND 命令  用来判断：谁把系统搞卡了。</p>
-</blockquote>
-<h2 id="四、结束进程-kill"><a href="#四、结束进程-kill" class="headerlink" title="四、结束进程 kill"></a>四、结束进程 kill</h2><ol>
-<li>正常杀死（推荐）<code>kill PID</code></li>
-<li>强制杀死（杀不死用这个）<code>kill -9 PID</code><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ps -ef | grep nginx</span><br><span class="line"><span class="built_in">kill</span> -9 12345</span><br></pre></td></tr></table></figure></li>
-</ol>
-<h2 id="五、查看端口对应的进程"><a href="#五、查看端口对应的进程" class="headerlink" title="五、查看端口对应的进程"></a>五、查看端口对应的进程</h2><p><code>netstat -ntlp</code>&#x2F; <code>ss -ntlp</code></p>
-<blockquote>
-<p>端口号  进程ID  用 kill 干掉</p>
-</blockquote>
-<h2 id="六、查看后台程序-jobs"><a href="#六、查看后台程序-jobs" class="headerlink" title="六、查看后台程序 jobs"></a>六、查看后台程序 jobs</h2><p><code>jobs</code><br>把程序放到后台：命令后加<code>&amp;</code><br><code>sleep 100 &amp;</code></p>
-<h2 id="七、今日实战"><a href="#七、今日实战" class="headerlink" title="七、今日实战"></a>七、今日实战</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 1. 查看所有进程</span></span><br><span class="line">ps -ef</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 实时监控</span></span><br><span class="line">top</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. 找某个进程</span></span><br><span class="line">ps -ef | grep ssh</span><br><span class="line"></span><br><span class="line"><span class="comment"># 4. 查看端口</span></span><br><span class="line">netstat -ntlp</span><br><span class="line"></span><br><span class="line"><span class="comment"># 5. 测试杀进程</span></span><br><span class="line"><span class="built_in">sleep</span> 200 &amp;</span><br><span class="line">ps -ef | grep <span class="built_in">sleep</span></span><br><span class="line"><span class="built_in">kill</span> -9 进程号</span><br></pre></td></tr></table></figure>
-
-<h2 id="八、Day06-合格标准"><a href="#八、Day06-合格标准" class="headerlink" title="八、Day06 合格标准"></a>八、Day06 合格标准</h2><ol>
-<li>会用 <code>ps -ef</code>查看进程</li>
-<li>会用 <code>grep</code> 过滤进程</li>
-<li>会用 <code>top</code> 看系统负载</li>
-<li>会用 <code>kill</code> 和 <code>kill -9</code></li>
-<li>知道 PID 是什么</li>
-</ol>
-<h1 id="今天看进程、kill、端口，具备基础运维排查能力-后面部署服务、处理报错都会顺畅很多"><a href="#今天看进程、kill、端口，具备基础运维排查能力-后面部署服务、处理报错都会顺畅很多" class="headerlink" title="今天看进程、kill、端口，具备基础运维排查能力,后面部署服务、处理报错都会顺畅很多"></a>今天看进程、kill、端口，具备基础运维排查能力,后面部署服务、处理报错都会顺畅很多</h1>]]></content>
-      <categories>
-        <category>自学记录</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Day01 从零开始搭建CentOS7虚拟机 + FinalShell远程连接</title>
     <url>/2026/04/22/Day01-%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E6%90%AD%E5%BB%BACentOS7%E8%99%9A%E6%8B%9F%E6%9C%BA-FinalShell%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5/</url>
     <content><![CDATA[<h1 id="Day01｜从零搭建CentOS7虚拟机-FinalShell远程连接"><a href="#Day01｜从零搭建CentOS7虚拟机-FinalShell远程连接" class="headerlink" title="Day01｜从零搭建CentOS7虚拟机 + FinalShell远程连接"></a>Day01｜从零搭建CentOS7虚拟机 + FinalShell远程连接</h1><p>今天是运维自学 180 天计划的第一天，任务非常明确：<br>搭建好我们后续学习要用的 Linux 实验环境。<br>全程跟着做，零基础也能一次成功。</p>
@@ -226,46 +183,6 @@
       </tags>
   </entry>
   <entry>
-    <title>hexo的使用技巧（AI生成）</title>
-    <url>/2026/04/22/Hexo%20%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0%20Markdown%20%E6%A8%A1%E6%9D%BF%EF%BC%88%E5%8F%AF%E7%9B%B4%E6%8E%A5%E5%A4%8D%E5%88%B6%E4%BD%BF%E7%94%A8%EF%BC%89/</url>
-    <content><![CDATA[<h1 id="Hexo-博客文章-Markdown-模板（可直接复制使用）"><a href="#Hexo-博客文章-Markdown-模板（可直接复制使用）" class="headerlink" title="Hexo 博客文章 Markdown 模板（可直接复制使用）"></a>Hexo 博客文章 Markdown 模板（可直接复制使用）</h1><span id="more"></span>
-<p>说明：复制全文到 Hexo 生成的 .md 文章文件中，替换【】内的内容即可，格式已适配 Hexo，无需额外调整，包含常用的文章配置和正文格式。</p>
-<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line"><span class="section"># 文章核心配置（必改，Hexo 识别用）</span></span><br><span class="line">title: 【你的文章标题】  # 例：Hexo 博客新手入门：从写第一篇文章开始</span><br><span class="line">date: 【自动生成，无需修改】  # Hexo new 命令会自动生成，格式：2026-04-21 19:30:00</span><br><span class="line">categories: [【一级分类】, 【二级分类】]  # 例：[技术, Hexo]，支持多级，无二级分类可写 [技术]</span><br><span class="line">tags: [【标签1】, 【标签2】, 【标签3】]  # 例：[Hexo, GitHub, 博客技巧]，可多可少，用英文逗号分隔</span><br><span class="line">cover: 【封面图路径，可选】  # 例：/img/cover/hexo-article.jpg（图片放 source/img/cover/ 下）</span><br><span class="line"><span class="section">description: 【文章简介，可选】  # 用于博客首页展示，100字内最佳，例：记录 Hexo 博客写文章的完整流程，新手可直接照搬操作。</span></span><br><span class="line"><span class="section">---</span></span><br><span class="line"></span><br><span class="line"><span class="section"># 正文标题（一级标题，对应文章核心主题）</span></span><br><span class="line">这里写文章开头，可简单介绍本文核心内容，引导读者阅读。比如：本文将详细介绍 Hexo 博客文章的撰写技巧，包含 Markdown 常用格式、图片插入、代码块使用等，新手跟着操作就能快速上手。</span><br><span class="line"></span><br><span class="line"><span class="section">## 一、二级标题（分章节，清晰排版）</span></span><br><span class="line"><span class="section">### 1.1 三级标题（子章节，细化内容）</span></span><br><span class="line">正文内容可自由发挥，以下是 Hexo 博客常用的 Markdown 格式，直接复制替换即可使用。</span><br><span class="line"></span><br><span class="line"><span class="section">### 1.2 常用文本格式示例</span></span><br><span class="line"><span class="bullet">-</span> 加粗：<span class="strong">**这是加粗文本**</span>（适合强调重点，比如核心步骤、关键结论）</span><br><span class="line"><span class="bullet">-</span> 斜体：<span class="emphasis">*这是斜体文本*</span>（适合补充说明、引用）</span><br><span class="line"><span class="bullet">-</span> 删除线：~~这是删除线文本~~（适合修改说明、废弃内容）</span><br><span class="line"><span class="bullet">-</span> 引用：</span><br><span class="line"><span class="quote">&gt; 这是引用块，适合引用名言、他人观点，或者重点提示内容，比如：Hexo 的核心优势是轻量化、易部署，非常适合新手搭建个人博客。</span></span><br><span class="line"></span><br><span class="line"><span class="section">## 二、列表格式（适合步骤、要点）</span></span><br><span class="line"><span class="section">### 2.1 无序列表（用于并列要点）</span></span><br><span class="line"><span class="bullet">-</span> 要点1：无需按顺序的内容，比如文章核心亮点</span><br><span class="line"><span class="bullet">-</span> 要点2：Hexo 文章支持所有标准 Markdown 格式</span><br><span class="line"><span class="bullet">-</span> 要点3：部署前记得本地预览，避免格式错乱</span><br><span class="line"></span><br><span class="line"><span class="section">### 2.2 有序列表（用于步骤类内容，比如操作流程）</span></span><br><span class="line"><span class="bullet">1.</span> 第一步：打开终端，进入 Hexo 博客根目录</span><br><span class="line"><span class="bullet">2.</span> 第二步：执行 hexo new &quot;文章标题&quot; 生成文章文件</span><br><span class="line"><span class="bullet">3.</span> 第三步：用编辑器编辑文章，替换模板内容</span><br><span class="line"><span class="bullet">4.</span> 第四步：本地预览无误后，部署到 GitHub</span><br><span class="line"></span><br><span class="line"><span class="section">## 三、代码块（重点！技术博客常用）</span></span><br><span class="line"><span class="section">### 3.1 行内代码</span></span><br><span class="line">行内代码用 <span class="code">`包裹`</span>，比如：执行 <span class="code">`hexo clean &amp;&amp; hexo g &amp;&amp; hexo s`</span> 可本地预览博客。</span><br><span class="line"></span><br><span class="line"><span class="section">### 3.2 代码块（指定语言，高亮显示）</span></span><br><span class="line"><span class="code">```bash</span></span><br><span class="line"><span class="code"># Hexo 常用命令（bash 语言，自动高亮）</span></span><br><span class="line"><span class="code">hexo new &quot;文章标题&quot;  # 新建文章</span></span><br><span class="line"><span class="code">hexo clean  # 清理缓存</span></span><br><span class="line"><span class="code">hexo g  # 生成静态文件</span></span><br><span class="line"><span class="code">hexo s  # 启动本地服务器</span></span><br><span class="line"><span class="code">hexo d -g  # 生成并部署到 GitHub</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 示例：Python 代码块（其他语言同理，替换 lang 即可）</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">hello_hexo</span>():</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Hello Hexo! 我的第一篇博客文章&quot;</span>)</span><br><span class="line">hello_hexo()</span><br></pre></td></tr></table></figure>
-
-<h2 id="四、图片插入（本地图片-格式适配）"><a href="#四、图片插入（本地图片-格式适配）" class="headerlink" title="四、图片插入（本地图片+格式适配）"></a>四、图片插入（本地图片+格式适配）</h2><h3 id="4-1-本地图片（推荐，加载更快）"><a href="#4-1-本地图片（推荐，加载更快）" class="headerlink" title="4.1 本地图片（推荐，加载更快）"></a>4.1 本地图片（推荐，加载更快）</h3><ol>
-<li>先将图片放入 Hexo 博客的 <code>source/img/</code> 文件夹（可新建子文件夹，比如 img&#x2F;hexo&#x2F;）</li>
-<li>文章内插入格式：<br><img src="/img/%E3%80%90%E5%9B%BE%E7%89%87%E6%96%87%E4%BB%B6%E5%90%8D%E3%80%91.jpg" alt="图片描述（可选，利于SEO）"></li>
-</ol>
-<p>示例（假设图片放 source&#x2F;img&#x2F;hexo&#x2F; 下）：<br><img src="/img/hexo/preview.jpg" alt="Hexo 本地预览界面"></p>
-<h3 id="4-2-网络图片（可选）"><a href="#4-2-网络图片（可选）" class="headerlink" title="4.2 网络图片（可选）"></a>4.2 网络图片（可选）</h3><p><img src="https://cdn.jsdelivr.net/npm/hexo-theme-next@8.11.0/source/images/hexo.svg" alt="网络图片示例"></p>
-<h2 id="五、超链接（跳转链接、友链等）"><a href="#五、超链接（跳转链接、友链等）" class="headerlink" title="五、超链接（跳转链接、友链等）"></a>五、超链接（跳转链接、友链等）</h2><ul>
-<li>普通超链接：<a href="%E9%93%BE%E6%8E%A5%E5%9C%B0%E5%9D%80">链接文本</a>，例：<a href="https://github.com/">GitHub 官网</a></li>
-<li>锚点链接（跳转到本文某章节）：<a href="#%E4%B8%89%E3%80%81%E4%BB%A3%E7%A0%81%E5%9D%97%EF%BC%88%E9%87%8D%E7%82%B9%EF%BC%81%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2%E5%B8%B8%E7%94%A8%EF%BC%89">跳转到代码块章节</a></li>
-</ul>
-<h2 id="六、结尾总结（可选）"><a href="#六、结尾总结（可选）" class="headerlink" title="六、结尾总结（可选）"></a>六、结尾总结（可选）</h2><p>可在文章结尾总结核心内容，或者引导互动，比如：以上就是 Hexo 博客文章的完整模板使用方法，按照模板填空，就能快速写出格式规范的博客文章。如果遇到问题，可在评论区留言交流～</p>
-<h1 id="补充说明（必看）"><a href="#补充说明（必看）" class="headerlink" title="补充说明（必看）"></a>补充说明（必看）</h1><ol>
-<li>所有【】内的内容必须替换，否则会显示异常；</li>
-<li>封面图可选，没有可直接删除 cover: 这一行；</li>
-<li>分类和标签不要有特殊符号，中文、英文均可；</li>
-<li>文章内不要使用绝对本地路径（如 D:&#x2F;img&#x2F;xxx.jpg），否则部署后不显示；</li>
-<li>写完后执行 hexo clean &amp;&amp; hexo g &amp;&amp; hexo s 本地预览，确认格式无误再部署。</li>
-</ol>
-<pre><code>
-使用提示：复制上述代码块内的所有内容，粘贴到你用 `hexo new \&amp;\#34;标题\&amp;\#34;` 生成的 \.md 文件中，替换掉默认生成的内容，再修改【】内的信息、补充正文即可，无需额外调整格式。
-
-&gt; （注：文档部分内容可能由 AI 生成）
-</code></pre>
-]]></content>
-      <categories>
-        <category>自学记录</category>
-      </categories>
-      <tags>
-        <tag>随笔</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Day02 Linux 目录与文件常用命令(必背)</title>
     <url>/2026/04/22/Day02-Linux-%E6%96%87%E4%BB%B6%E4%B8%8E%E7%9B%AE%E5%BD%95%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4-%E5%BF%85%E8%83%8C/</url>
     <content><![CDATA[<h1 id="Day02｜Linux-目录与文件常用命令（必背版）"><a href="#Day02｜Linux-目录与文件常用命令（必背版）" class="headerlink" title="Day02｜Linux 目录与文件常用命令（必背版）"></a>Day02｜Linux 目录与文件常用命令（必背版）</h1><p>今天是 180 天运维自学计划的第二天，我们正式开始 Linux 最核心的内容：<strong>文件与目录操作</strong>。<br>这部分是 Linux 的基础中的基础，必须熟练到肌肉记忆。</p>
@@ -332,6 +249,136 @@
       </tags>
   </entry>
   <entry>
+    <title>Day04 Linux 网络基础与常见网络命令</title>
+    <url>/2026/04/23/Day04-Linux-%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80%E4%B8%8E%E5%B8%B8%E8%A7%81%E7%BD%91%E7%BB%9C%E5%91%BD%E4%BB%A4/</url>
+    <content><![CDATA[<h1 id="Day04｜Linux-网络基础与常用网络命令"><a href="#Day04｜Linux-网络基础与常用网络命令" class="headerlink" title="Day04｜Linux 网络基础与常用网络命令"></a>Day04｜Linux 网络基础与常用网络命令</h1><p>今天是 180 天运维自学计划第 4 天，我们学习 <strong>Linux 网络</strong>。<br>不管是搭环境、部署服务、排查问题，网络都是必须掌握的核心技能。</p>
+<span id="more"></span>
+<h2 id="一、查看-IP-地址"><a href="#一、查看-IP-地址" class="headerlink" title="一、查看 IP 地址"></a>一、查看 IP 地址</h2><h3 id="1-查看网卡与IP信息"><a href="#1-查看网卡与IP信息" class="headerlink" title="1. 查看网卡与IP信息"></a>1. 查看网卡与IP信息</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ip addr</span><br><span class="line">ifconfig</span><br><span class="line"><span class="comment"># 大部分输出的内容再Day01 中已经见过了，这里不再赘述</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取 IP 地址</span></span><br><span class="line">hostname -i         <span class="comment"># 获取本机 IP</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看网关与路由</span></span><br><span class="line">ip route            <span class="comment"># 获取路由信息   </span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看系统DNS</span></span><br><span class="line"><span class="built_in">cat</span> /etc/resolv.conf</span><br></pre></td></tr></table></figure>
+<h3 id="2-测试网络连通性"><a href="#2-测试网络连通性" class="headerlink" title="2. 测试网络连通性"></a>2. 测试网络连通性</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ping www.baidu.com</span><br><span class="line">ping -c 4 www.baidu.com            <span class="comment"># 测试 4 次</span></span><br><span class="line">ping -c 4 -w 2 www.baidu.com       <span class="comment"># 测试 4 次，每次等待 2 秒</span></span><br><span class="line">ping -c 4 -i 2 www.baidu.com       <span class="comment"># 测试 4 次，每次间隔 2 秒</span></span><br><span class="line">ping -s 1000 www.baidu.com         <span class="comment"># 测试 1000 字节</span></span><br><span class="line">&gt; -c ：指定测试次数  -w ：指定测试时间  -i ：指定测试间隔   -s ：指定测试数据包大小</span><br></pre></td></tr></table></figure>
+
+<h2 id="二、查看端口情况"><a href="#二、查看端口情况" class="headerlink" title="二、查看端口情况"></a>二、查看端口情况</h2><h3 id="1-查看连通情况"><a href="#1-查看连通情况" class="headerlink" title="1.查看连通情况"></a>1.查看连通情况</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">telnet www.baidu.com 80         <span class="comment"># 测试端口是否连通</span></span><br><span class="line">curl www.baidu.com              <span class="comment"># 测试端口是否连通</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-查看端口占用情况"><a href="#2-查看端口占用情况" class="headerlink" title="2.查看端口占用情况"></a>2.查看端口占用情况</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 1. 安装 net-tools（没有就装一下）</span></span><br><span class="line">yum install -y net-tools</span><br><span class="line"><span class="comment"># 2. 查看所有端口</span></span><br><span class="line">netstat -ntlp</span><br><span class="line">&gt; -n: 以数字显示 IP 和端口  -t: 显示 TCP 端口  -l: 显示正在监听的端口  -p: 显示进程名</span><br></pre></td></tr></table></figure>
+
+<h2 id="三、防火墙基础操作"><a href="#三、防火墙基础操作" class="headerlink" title="三、防火墙基础操作"></a>三、防火墙基础操作</h2><ol>
+<li>查看防火墙状态 <code>systemctl status firewalld</code></li>
+<li>临时关闭防火墙（测试环境用） <code>systemctl stop firewalld</code></li>
+<li>禁止开机自启 <code>systemctl disable firewalld</code></li>
+</ol>
+<h2 id="实战训练"><a href="#实战训练" class="headerlink" title="实战训练"></a>实战训练</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 1. 查看自己的IP</span></span><br><span class="line">ip addr</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 测试网络</span></span><br><span class="line">ping -c 4 www.baidu.com</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. 查看网关</span></span><br><span class="line">ip route</span><br><span class="line"></span><br><span class="line"><span class="comment"># 4. 查看端口占用</span></span><br><span class="line">netstat -ntlp</span><br><span class="line"></span><br><span class="line"><span class="comment"># 5. 查看DNS</span></span><br><span class="line"><span class="built_in">cat</span> /etc/resolv.conf</span><br></pre></td></tr></table></figure>
+
+<h2 id="Day04-合格标准"><a href="#Day04-合格标准" class="headerlink" title="Day04 合格标准"></a>Day04 合格标准</h2><ul>
+<li>会用 ip addr 查看自己的 IP</li>
+<li>会用 ping 测试网络</li>
+<li>会用 netstat -ntlp 查看端口</li>
+<li>知道如何关闭防火墙</li>
+<li>能判断自己的虚拟机是否能正常上网</li>
+</ul>
+<h1 id="以上就是今天关于Linux网络的一些基础，几分钟的事情，洒洒水啦！"><a href="#以上就是今天关于Linux网络的一些基础，几分钟的事情，洒洒水啦！" class="headerlink" title="以上就是今天关于Linux网络的一些基础，几分钟的事情，洒洒水啦！"></a>以上就是今天关于Linux网络的一些基础，几分钟的事情，洒洒水啦！</h1>]]></content>
+      <categories>
+        <category>自学记录</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Day06 Linux 进程管理(ps/top/kill)</title>
+    <url>/2026/04/23/Day06-Linux-%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86-ps-top-kill/</url>
+    <content><![CDATA[<h1 id="Day06｜Linux-进程管理（ps-top-kill-必学）"><a href="#Day06｜Linux-进程管理（ps-top-kill-必学）" class="headerlink" title="Day06｜Linux 进程管理（ps&#x2F;top&#x2F;kill 必学）"></a>Day06｜Linux 进程管理（ps&#x2F;top&#x2F;kill 必学）</h1><p>今天是 180 天运维自学计划第 6 天，学习 <strong>Linux 进程管理</strong>。<br>以后排查卡慢、杀服务、看负载，全靠这几个命令。</p>
+<h2 id="一、什么是进程？"><a href="#一、什么是进程？" class="headerlink" title="一、什么是进程？"></a>一、什么是进程？</h2><p>简单说：<br><strong>正在运行的程序 &#x3D; 进程</strong><br>每个进程都有一个唯一编号：<strong>PID</strong></p>
+<span id="more"></span>
+<h2 id="二、查看进程-ps（最常用）"><a href="#二、查看进程-ps（最常用）" class="headerlink" title="二、查看进程 ps（最常用）"></a>二、查看进程 ps（最常用）</h2><h3 id="1-查看当前用户进程"><a href="#1-查看当前用户进程" class="headerlink" title="1. 查看当前用户进程"></a>1. 查看当前用户进程</h3><p><code>ps</code></p>
+<h3 id="2-查看所有进程"><a href="#2-查看所有进程" class="headerlink" title="2. 查看所有进程"></a>2. 查看所有进程</h3><p><code>ps -ef</code></p>
+<h3 id="3-带详细资源显示"><a href="#3-带详细资源显示" class="headerlink" title="3. 带详细资源显示"></a>3. 带详细资源显示</h3><p><code>ps aux</code></p>
+<h3 id="4-过滤某个进程（实战常用）"><a href="#4-过滤某个进程（实战常用）" class="headerlink" title="4. 过滤某个进程（实战常用）"></a>4. 过滤某个进程（实战常用）</h3><p><code>ps -ef | grep mysql</code></p>
+<blockquote>
+<p>PID：进程 ID  UID：进程用户 ID  PPID：父进程 ID  CMD：进程名字</p>
+</blockquote>
+<h2 id="三、实时监控进程-top"><a href="#三、实时监控进程-top" class="headerlink" title="三、实时监控进程 top"></a>三、实时监控进程 top</h2><p><code>top</code>  退出按：<code>q</code></p>
+<blockquote>
+<p>PID 进程 ID  %CPU CPU 占用  %MEM 内存占用  COMMAND 命令  用来判断：谁把系统搞卡了。</p>
+</blockquote>
+<h2 id="四、结束进程-kill"><a href="#四、结束进程-kill" class="headerlink" title="四、结束进程 kill"></a>四、结束进程 kill</h2><ol>
+<li>正常杀死（推荐）<code>kill PID</code></li>
+<li>强制杀死（杀不死用这个）<code>kill -9 PID</code><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ps -ef | grep nginx</span><br><span class="line"><span class="built_in">kill</span> -9 12345</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="五、查看端口对应的进程"><a href="#五、查看端口对应的进程" class="headerlink" title="五、查看端口对应的进程"></a>五、查看端口对应的进程</h2><p><code>netstat -ntlp</code>&#x2F; <code>ss -ntlp</code></p>
+<blockquote>
+<p>端口号  进程ID  用 kill 干掉</p>
+</blockquote>
+<h2 id="六、查看后台程序-jobs"><a href="#六、查看后台程序-jobs" class="headerlink" title="六、查看后台程序 jobs"></a>六、查看后台程序 jobs</h2><p><code>jobs</code><br>把程序放到后台：命令后加<code>&amp;</code><br><code>sleep 100 &amp;</code></p>
+<h2 id="七、今日实战"><a href="#七、今日实战" class="headerlink" title="七、今日实战"></a>七、今日实战</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 1. 查看所有进程</span></span><br><span class="line">ps -ef</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 实时监控</span></span><br><span class="line">top</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. 找某个进程</span></span><br><span class="line">ps -ef | grep ssh</span><br><span class="line"></span><br><span class="line"><span class="comment"># 4. 查看端口</span></span><br><span class="line">netstat -ntlp</span><br><span class="line"></span><br><span class="line"><span class="comment"># 5. 测试杀进程</span></span><br><span class="line"><span class="built_in">sleep</span> 200 &amp;</span><br><span class="line">ps -ef | grep <span class="built_in">sleep</span></span><br><span class="line"><span class="built_in">kill</span> -9 进程号</span><br></pre></td></tr></table></figure>
+
+<h2 id="八、Day06-合格标准"><a href="#八、Day06-合格标准" class="headerlink" title="八、Day06 合格标准"></a>八、Day06 合格标准</h2><ol>
+<li>会用 <code>ps -ef</code>查看进程</li>
+<li>会用 <code>grep</code> 过滤进程</li>
+<li>会用 <code>top</code> 看系统负载</li>
+<li>会用 <code>kill</code> 和 <code>kill -9</code></li>
+<li>知道 PID 是什么</li>
+</ol>
+<h1 id="今天看进程、kill、端口，具备基础运维排查能力-后面部署服务、处理报错都会顺畅很多"><a href="#今天看进程、kill、端口，具备基础运维排查能力-后面部署服务、处理报错都会顺畅很多" class="headerlink" title="今天看进程、kill、端口，具备基础运维排查能力,后面部署服务、处理报错都会顺畅很多"></a>今天看进程、kill、端口，具备基础运维排查能力,后面部署服务、处理报错都会顺畅很多</h1>]]></content>
+      <categories>
+        <category>自学记录</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>hexo的使用技巧（AI生成）</title>
+    <url>/2026/04/22/Hexo%20%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0%20Markdown%20%E6%A8%A1%E6%9D%BF%EF%BC%88%E5%8F%AF%E7%9B%B4%E6%8E%A5%E5%A4%8D%E5%88%B6%E4%BD%BF%E7%94%A8%EF%BC%89/</url>
+    <content><![CDATA[<h1 id="Hexo-博客文章-Markdown-模板（可直接复制使用）"><a href="#Hexo-博客文章-Markdown-模板（可直接复制使用）" class="headerlink" title="Hexo 博客文章 Markdown 模板（可直接复制使用）"></a>Hexo 博客文章 Markdown 模板（可直接复制使用）</h1><span id="more"></span>
+<p>说明：复制全文到 Hexo 生成的 .md 文章文件中，替换【】内的内容即可，格式已适配 Hexo，无需额外调整，包含常用的文章配置和正文格式。</p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line"><span class="section"># 文章核心配置（必改，Hexo 识别用）</span></span><br><span class="line">title: 【你的文章标题】  # 例：Hexo 博客新手入门：从写第一篇文章开始</span><br><span class="line">date: 【自动生成，无需修改】  # Hexo new 命令会自动生成，格式：2026-04-21 19:30:00</span><br><span class="line">categories: [【一级分类】, 【二级分类】]  # 例：[技术, Hexo]，支持多级，无二级分类可写 [技术]</span><br><span class="line">tags: [【标签1】, 【标签2】, 【标签3】]  # 例：[Hexo, GitHub, 博客技巧]，可多可少，用英文逗号分隔</span><br><span class="line">cover: 【封面图路径，可选】  # 例：/img/cover/hexo-article.jpg（图片放 source/img/cover/ 下）</span><br><span class="line"><span class="section">description: 【文章简介，可选】  # 用于博客首页展示，100字内最佳，例：记录 Hexo 博客写文章的完整流程，新手可直接照搬操作。</span></span><br><span class="line"><span class="section">---</span></span><br><span class="line"></span><br><span class="line"><span class="section"># 正文标题（一级标题，对应文章核心主题）</span></span><br><span class="line">这里写文章开头，可简单介绍本文核心内容，引导读者阅读。比如：本文将详细介绍 Hexo 博客文章的撰写技巧，包含 Markdown 常用格式、图片插入、代码块使用等，新手跟着操作就能快速上手。</span><br><span class="line"></span><br><span class="line"><span class="section">## 一、二级标题（分章节，清晰排版）</span></span><br><span class="line"><span class="section">### 1.1 三级标题（子章节，细化内容）</span></span><br><span class="line">正文内容可自由发挥，以下是 Hexo 博客常用的 Markdown 格式，直接复制替换即可使用。</span><br><span class="line"></span><br><span class="line"><span class="section">### 1.2 常用文本格式示例</span></span><br><span class="line"><span class="bullet">-</span> 加粗：<span class="strong">**这是加粗文本**</span>（适合强调重点，比如核心步骤、关键结论）</span><br><span class="line"><span class="bullet">-</span> 斜体：<span class="emphasis">*这是斜体文本*</span>（适合补充说明、引用）</span><br><span class="line"><span class="bullet">-</span> 删除线：~~这是删除线文本~~（适合修改说明、废弃内容）</span><br><span class="line"><span class="bullet">-</span> 引用：</span><br><span class="line"><span class="quote">&gt; 这是引用块，适合引用名言、他人观点，或者重点提示内容，比如：Hexo 的核心优势是轻量化、易部署，非常适合新手搭建个人博客。</span></span><br><span class="line"></span><br><span class="line"><span class="section">## 二、列表格式（适合步骤、要点）</span></span><br><span class="line"><span class="section">### 2.1 无序列表（用于并列要点）</span></span><br><span class="line"><span class="bullet">-</span> 要点1：无需按顺序的内容，比如文章核心亮点</span><br><span class="line"><span class="bullet">-</span> 要点2：Hexo 文章支持所有标准 Markdown 格式</span><br><span class="line"><span class="bullet">-</span> 要点3：部署前记得本地预览，避免格式错乱</span><br><span class="line"></span><br><span class="line"><span class="section">### 2.2 有序列表（用于步骤类内容，比如操作流程）</span></span><br><span class="line"><span class="bullet">1.</span> 第一步：打开终端，进入 Hexo 博客根目录</span><br><span class="line"><span class="bullet">2.</span> 第二步：执行 hexo new &quot;文章标题&quot; 生成文章文件</span><br><span class="line"><span class="bullet">3.</span> 第三步：用编辑器编辑文章，替换模板内容</span><br><span class="line"><span class="bullet">4.</span> 第四步：本地预览无误后，部署到 GitHub</span><br><span class="line"></span><br><span class="line"><span class="section">## 三、代码块（重点！技术博客常用）</span></span><br><span class="line"><span class="section">### 3.1 行内代码</span></span><br><span class="line">行内代码用 <span class="code">`包裹`</span>，比如：执行 <span class="code">`hexo clean &amp;&amp; hexo g &amp;&amp; hexo s`</span> 可本地预览博客。</span><br><span class="line"></span><br><span class="line"><span class="section">### 3.2 代码块（指定语言，高亮显示）</span></span><br><span class="line"><span class="code">```bash</span></span><br><span class="line"><span class="code"># Hexo 常用命令（bash 语言，自动高亮）</span></span><br><span class="line"><span class="code">hexo new &quot;文章标题&quot;  # 新建文章</span></span><br><span class="line"><span class="code">hexo clean  # 清理缓存</span></span><br><span class="line"><span class="code">hexo g  # 生成静态文件</span></span><br><span class="line"><span class="code">hexo s  # 启动本地服务器</span></span><br><span class="line"><span class="code">hexo d -g  # 生成并部署到 GitHub</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 示例：Python 代码块（其他语言同理，替换 lang 即可）</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">hello_hexo</span>():</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Hello Hexo! 我的第一篇博客文章&quot;</span>)</span><br><span class="line">hello_hexo()</span><br></pre></td></tr></table></figure>
+
+<h2 id="四、图片插入（本地图片-格式适配）"><a href="#四、图片插入（本地图片-格式适配）" class="headerlink" title="四、图片插入（本地图片+格式适配）"></a>四、图片插入（本地图片+格式适配）</h2><h3 id="4-1-本地图片（推荐，加载更快）"><a href="#4-1-本地图片（推荐，加载更快）" class="headerlink" title="4.1 本地图片（推荐，加载更快）"></a>4.1 本地图片（推荐，加载更快）</h3><ol>
+<li>先将图片放入 Hexo 博客的 <code>source/img/</code> 文件夹（可新建子文件夹，比如 img&#x2F;hexo&#x2F;）</li>
+<li>文章内插入格式：<br><img src="/img/%E3%80%90%E5%9B%BE%E7%89%87%E6%96%87%E4%BB%B6%E5%90%8D%E3%80%91.jpg" alt="图片描述（可选，利于SEO）"></li>
+</ol>
+<p>示例（假设图片放 source&#x2F;img&#x2F;hexo&#x2F; 下）：<br><img src="/img/hexo/preview.jpg" alt="Hexo 本地预览界面"></p>
+<h3 id="4-2-网络图片（可选）"><a href="#4-2-网络图片（可选）" class="headerlink" title="4.2 网络图片（可选）"></a>4.2 网络图片（可选）</h3><p><img src="https://cdn.jsdelivr.net/npm/hexo-theme-next@8.11.0/source/images/hexo.svg" alt="网络图片示例"></p>
+<h2 id="五、超链接（跳转链接、友链等）"><a href="#五、超链接（跳转链接、友链等）" class="headerlink" title="五、超链接（跳转链接、友链等）"></a>五、超链接（跳转链接、友链等）</h2><ul>
+<li>普通超链接：<a href="%E9%93%BE%E6%8E%A5%E5%9C%B0%E5%9D%80">链接文本</a>，例：<a href="https://github.com/">GitHub 官网</a></li>
+<li>锚点链接（跳转到本文某章节）：<a href="#%E4%B8%89%E3%80%81%E4%BB%A3%E7%A0%81%E5%9D%97%EF%BC%88%E9%87%8D%E7%82%B9%EF%BC%81%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2%E5%B8%B8%E7%94%A8%EF%BC%89">跳转到代码块章节</a></li>
+</ul>
+<h2 id="六、结尾总结（可选）"><a href="#六、结尾总结（可选）" class="headerlink" title="六、结尾总结（可选）"></a>六、结尾总结（可选）</h2><p>可在文章结尾总结核心内容，或者引导互动，比如：以上就是 Hexo 博客文章的完整模板使用方法，按照模板填空，就能快速写出格式规范的博客文章。如果遇到问题，可在评论区留言交流～</p>
+<h1 id="补充说明（必看）"><a href="#补充说明（必看）" class="headerlink" title="补充说明（必看）"></a>补充说明（必看）</h1><ol>
+<li>所有【】内的内容必须替换，否则会显示异常；</li>
+<li>封面图可选，没有可直接删除 cover: 这一行；</li>
+<li>分类和标签不要有特殊符号，中文、英文均可；</li>
+<li>文章内不要使用绝对本地路径（如 D:&#x2F;img&#x2F;xxx.jpg），否则部署后不显示；</li>
+<li>写完后执行 hexo clean &amp;&amp; hexo g &amp;&amp; hexo s 本地预览，确认格式无误再部署。</li>
+</ol>
+<pre><code>
+使用提示：复制上述代码块内的所有内容，粘贴到你用 `hexo new \&amp;\#34;标题\&amp;\#34;` 生成的 \.md 文件中，替换掉默认生成的内容，再修改【】内的信息、补充正文即可，无需额外调整格式。
+
+&gt; （注：文档部分内容可能由 AI 生成）
+</code></pre>
+]]></content>
+      <categories>
+        <category>自学记录</category>
+      </categories>
+      <tags>
+        <tag>随笔</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>我的第一篇博客：为什么叫侘寂(wabi-sabi)</title>
+    <url>/2026/04/21/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%EF%BC%9A%E4%B8%BA%E4%BB%80%E4%B9%88%E5%8F%AB%E4%BE%98%E5%AF%82/</url>
+    <content><![CDATA[<h1 id="你好，世界，这里是侘寂的小站"><a href="#你好，世界，这里是侘寂的小站" class="headerlink" title="你好，世界，这里是侘寂的小站"></a>你好，世界，这里是侘寂的小站</h1><p>我是wabi-sabi-c，一个喜欢慢下来记录生活和技术的人。</p>
+<p>之所以叫侘寂(wabi-sabi)，是因为喜欢那种不完美、朴素又安静的感觉。这个博客，就是我用来存放这些碎片的地方。</p>
+]]></content>
+      <categories>
+        <category>日常</category>
+      </categories>
+      <tags>
+        <tag>随笔</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>我的运维自学开篇：开篇规划+AI辅助+合格标准</title>
     <url>/2026/04/22/%E6%88%91%E7%9A%84%E8%BF%90%E7%BB%B4%E8%87%AA%E5%AD%A6%E5%BC%80%E7%AF%87%EF%BC%9A%E5%BC%80%E7%AF%87%E8%A7%84%E5%88%92-AI%E8%BE%85%E5%8A%A9-%E5%90%88%E6%A0%BC%E6%A0%87%E5%87%86/</url>
     <content><![CDATA[<p>今天正式在 GitHub Pages 上开启我的 <strong>Linux+Python+阿里云ACP+Docker</strong> 180天自学之路！之前找了很多教程，要么太散、要么不知道学到什么程度才算会，直到整理出这套<strong>带每日合格标准+AI辅助</strong>的完整路线，每天学完就能自测，不迷茫、不内耗。</p>
@@ -385,53 +432,6 @@
         <tag>Linux</tag>
         <tag>运维自学</tag>
         <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Day04 Linux 网络基础与常见网络命令</title>
-    <url>/2026/04/23/Day04-Linux-%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80%E4%B8%8E%E5%B8%B8%E8%A7%81%E7%BD%91%E7%BB%9C%E5%91%BD%E4%BB%A4/</url>
-    <content><![CDATA[<h1 id="Day04｜Linux-网络基础与常用网络命令"><a href="#Day04｜Linux-网络基础与常用网络命令" class="headerlink" title="Day04｜Linux 网络基础与常用网络命令"></a>Day04｜Linux 网络基础与常用网络命令</h1><p>今天是 180 天运维自学计划第 4 天，我们学习 <strong>Linux 网络</strong>。<br>不管是搭环境、部署服务、排查问题，网络都是必须掌握的核心技能。</p>
-<span id="more"></span>
-<h2 id="一、查看-IP-地址"><a href="#一、查看-IP-地址" class="headerlink" title="一、查看 IP 地址"></a>一、查看 IP 地址</h2><h3 id="1-查看网卡与IP信息"><a href="#1-查看网卡与IP信息" class="headerlink" title="1. 查看网卡与IP信息"></a>1. 查看网卡与IP信息</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ip addr</span><br><span class="line">ifconfig</span><br><span class="line"><span class="comment"># 大部分输出的内容再Day01 中已经见过了，这里不再赘述</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取 IP 地址</span></span><br><span class="line">hostname -i         <span class="comment"># 获取本机 IP</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看网关与路由</span></span><br><span class="line">ip route            <span class="comment"># 获取路由信息   </span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看系统DNS</span></span><br><span class="line"><span class="built_in">cat</span> /etc/resolv.conf</span><br></pre></td></tr></table></figure>
-<h3 id="2-测试网络连通性"><a href="#2-测试网络连通性" class="headerlink" title="2. 测试网络连通性"></a>2. 测试网络连通性</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ping www.baidu.com</span><br><span class="line">ping -c 4 www.baidu.com            <span class="comment"># 测试 4 次</span></span><br><span class="line">ping -c 4 -w 2 www.baidu.com       <span class="comment"># 测试 4 次，每次等待 2 秒</span></span><br><span class="line">ping -c 4 -i 2 www.baidu.com       <span class="comment"># 测试 4 次，每次间隔 2 秒</span></span><br><span class="line">ping -s 1000 www.baidu.com         <span class="comment"># 测试 1000 字节</span></span><br><span class="line">&gt; -c ：指定测试次数  -w ：指定测试时间  -i ：指定测试间隔   -s ：指定测试数据包大小</span><br></pre></td></tr></table></figure>
-
-<h2 id="二、查看端口情况"><a href="#二、查看端口情况" class="headerlink" title="二、查看端口情况"></a>二、查看端口情况</h2><h3 id="1-查看连通情况"><a href="#1-查看连通情况" class="headerlink" title="1.查看连通情况"></a>1.查看连通情况</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">telnet www.baidu.com 80         <span class="comment"># 测试端口是否连通</span></span><br><span class="line">curl www.baidu.com              <span class="comment"># 测试端口是否连通</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="2-查看端口占用情况"><a href="#2-查看端口占用情况" class="headerlink" title="2.查看端口占用情况"></a>2.查看端口占用情况</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 1. 安装 net-tools（没有就装一下）</span></span><br><span class="line">yum install -y net-tools</span><br><span class="line"><span class="comment"># 2. 查看所有端口</span></span><br><span class="line">netstat -ntlp</span><br><span class="line">&gt; -n: 以数字显示 IP 和端口  -t: 显示 TCP 端口  -l: 显示正在监听的端口  -p: 显示进程名</span><br></pre></td></tr></table></figure>
-
-<h2 id="三、防火墙基础操作"><a href="#三、防火墙基础操作" class="headerlink" title="三、防火墙基础操作"></a>三、防火墙基础操作</h2><ol>
-<li>查看防火墙状态 <code>systemctl status firewalld</code></li>
-<li>临时关闭防火墙（测试环境用） <code>systemctl stop firewalld</code></li>
-<li>禁止开机自启 <code>systemctl disable firewalld</code></li>
-</ol>
-<h2 id="实战训练"><a href="#实战训练" class="headerlink" title="实战训练"></a>实战训练</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 1. 查看自己的IP</span></span><br><span class="line">ip addr</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 测试网络</span></span><br><span class="line">ping -c 4 www.baidu.com</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. 查看网关</span></span><br><span class="line">ip route</span><br><span class="line"></span><br><span class="line"><span class="comment"># 4. 查看端口占用</span></span><br><span class="line">netstat -ntlp</span><br><span class="line"></span><br><span class="line"><span class="comment"># 5. 查看DNS</span></span><br><span class="line"><span class="built_in">cat</span> /etc/resolv.conf</span><br></pre></td></tr></table></figure>
-
-<h2 id="Day04-合格标准"><a href="#Day04-合格标准" class="headerlink" title="Day04 合格标准"></a>Day04 合格标准</h2><ul>
-<li>会用 ip addr 查看自己的 IP</li>
-<li>会用 ping 测试网络</li>
-<li>会用 netstat -ntlp 查看端口</li>
-<li>知道如何关闭防火墙</li>
-<li>能判断自己的虚拟机是否能正常上网</li>
-</ul>
-<h1 id="以上就是今天关于Linux网络的一些基础，几分钟的事情，洒洒水啦！"><a href="#以上就是今天关于Linux网络的一些基础，几分钟的事情，洒洒水啦！" class="headerlink" title="以上就是今天关于Linux网络的一些基础，几分钟的事情，洒洒水啦！"></a>以上就是今天关于Linux网络的一些基础，几分钟的事情，洒洒水啦！</h1>]]></content>
-      <categories>
-        <category>自学记录</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>我的第一篇博客：为什么叫侘寂(wabi-sabi)</title>
-    <url>/2026/04/21/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%EF%BC%9A%E4%B8%BA%E4%BB%80%E4%B9%88%E5%8F%AB%E4%BE%98%E5%AF%82/</url>
-    <content><![CDATA[<h1 id="你好，世界，这里是侘寂的小站"><a href="#你好，世界，这里是侘寂的小站" class="headerlink" title="你好，世界，这里是侘寂的小站"></a>你好，世界，这里是侘寂的小站</h1><p>我是wabi-sabi-c，一个喜欢慢下来记录生活和技术的人。</p>
-<p>之所以叫侘寂(wabi-sabi)，是因为喜欢那种不完美、朴素又安静的感觉。这个博客，就是我用来存放这些碎片的地方。</p>
-]]></content>
-      <categories>
-        <category>日常</category>
-      </categories>
-      <tags>
-        <tag>随笔</tag>
       </tags>
   </entry>
 </search>
