@@ -70,17 +70,20 @@ hello_hexo()
 ### 4.1 本地图片（推荐，加载更快）
 1. 先将图片放入 Hexo 博客的 `source/img/` 文件夹（可新建子文件夹，比如 img/hexo/）
 2. 文章内插入格式：
-![图片描述（可选，利于SEO）](/img/【图片文件名】.jpg)
+
+` ![图片描述（可选，利于SEO）](/img/【图片文件名】.jpg) `
 
 示例（假设图片放 source/img/hexo/ 下）：
-![Hexo 本地预览界面](/img/hexo/preview.jpg)
+
+` ![Hexo 本地预览界面](/img/hexo/preview.jpg) `
 
 ### 4.2 网络图片（可选）
-![网络图片示例](https://cdn.jsdelivr.net/npm/hexo-theme-next@8.11.0/source/images/hexo.svg)
+
+` ![网络图片示例](https://cdn.jsdelivr.net/npm/hexo-theme-next@8.11.0/source/images/hexo.svg) `
 
 ## 五、超链接（跳转链接、友链等）
-- 普通超链接：[链接文本](链接地址)，例：[GitHub 官网](https://github.com)
-- 锚点链接（跳转到本文某章节）：[跳转到代码块章节](#三、代码块（重点！技术博客常用）)
+` 普通超链接：[链接文本](链接地址)，例：[GitHub 官网](https://github.com)
+ 锚点链接（跳转到本文某章节）：[跳转到代码块章节](#三、代码块（重点！技术博客常用）) `
 
 ## 六、结尾总结（可选）
 可在文章结尾总结核心内容，或者引导互动，比如：以上就是 Hexo 博客文章的完整模板使用方法，按照模板填空，就能快速写出格式规范的博客文章。如果遇到问题，可在评论区留言交流～
