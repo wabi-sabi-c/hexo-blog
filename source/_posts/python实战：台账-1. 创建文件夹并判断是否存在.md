@@ -1,7 +1,7 @@
 ---
-title: python实战：台账--创建文件夹并判断是否存在
+title: python实战：台账-1. 创建文件夹并判断是否存在
 date: 2026-04-24 13:05:37
-tags: [python, python实战]
+tags: [Python]
 categories: [python实战--台账]
 ---
 

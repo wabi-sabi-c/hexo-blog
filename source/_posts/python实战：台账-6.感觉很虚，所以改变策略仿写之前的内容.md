@@ -1,7 +1,7 @@
 ---
-title: python实战--台账6.感觉很虚，所以改变策略仿写之前的内容
+title: python实战：台账-6. 感觉很虚，所以改变策略仿写之前的内容
 date: 2026-04-28 10:38:06
-tags: [python, python实战]
+tags: [Python]
 categories: [python实战--台账]
 ---
 

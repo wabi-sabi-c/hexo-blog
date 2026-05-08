@@ -1,7 +1,7 @@
 ---
-title: python实战：台账--初始化Excel表格
+title: python实战：台账-4. 初始化Excel表格
 date: 2026-04-24 15:25:07
-tags: [python, python实战]
+tags: [Python]
 categories: [python实战--台账]
 ---
 

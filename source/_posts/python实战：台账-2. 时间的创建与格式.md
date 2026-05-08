@@ -1,7 +1,7 @@
 ---
-title: 'python实战: 台账--时间的创建与格式'
+title: 'python实战: 台账-2. 时间的创建与格式'
 date: 2026-04-24 14:00:22
-tags: [python, python实战]
+tags: [Python]
 categories: [python实战--台账]
 ---
 

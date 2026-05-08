@@ -1,7 +1,7 @@
 ---
 title: Day01 从零开始搭建CentOS7虚拟机 + FinalShell远程连接
 date: 2026-04-22 10:36:42
-tags: [Linux, CentOS7, VMware, FinalShell]
+tags: [Linux]
 categories: [自学记录]
 ---
 

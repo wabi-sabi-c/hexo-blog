@@ -1,7 +1,7 @@
 ---
 title: 三、Python&Linux_learning
 date: 2026-04-29 15:25:20
-tags: [python, Linux]
+tags: [Python, Linux]
 categories: [自学记录]
 ---
 

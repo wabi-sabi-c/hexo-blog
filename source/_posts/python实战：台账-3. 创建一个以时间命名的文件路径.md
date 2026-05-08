@@ -1,7 +1,7 @@
 ---
-title: python实战：台账--创建一个以时间命名的文件路径
+title: python实战：台账-3. 创建一个以时间命名的文件路径
 date: 2026-04-24 14:37:58
-tags: [python, python实战]
+tags: [Python]
 categories: [python实战--台账]
 ---
 

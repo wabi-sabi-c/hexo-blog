@@ -1,7 +1,7 @@
 ---
 title: 四、python&Linux_learning
 date: 2026-04-30 11:05:00
-tags: [python,Linux]
+tags: [Python, Linux]
 categories: [自学记录]
 ---
 - 今天继续学习python，默写出上一篇的计算器代码或者熟悉整个框架，for循环练习
@@ -124,6 +124,8 @@ if __name__ == '__main__':
 
 ```
 ## 踩坑与解决
+```python
+
 1. 关于列表打印索引和元素
 for i in range(len(list1)):
     print(f"列表中的元素为：{list1[i]} 索引为：{i}")
@@ -154,6 +156,7 @@ for i in range(len(list1)):
 3. 字典的键、值，支持 数字 / 字符串 / 布尔 / 浮点数 任意类型，混着写完全不报错！
 dict1 = {'a': 1, "你好": 'b', 'c': 4.5, 'd': True}
 
+```
 
 # Linux
 ## 复习Linux命令
