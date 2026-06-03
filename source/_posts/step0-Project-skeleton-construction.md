@@ -349,7 +349,7 @@ uvicorn main:app --reload --port 8001
 ✅ 完成这章后该有的状态
 - 项目骨架已建立
 
-- 一个最简单的 FastAPI 应用已启动
+- 一个最简单的 FastAPI 应用已启动(`CTRL + C`停止后端、`docker-compose down`停止docker容器)
 
 - 占位的 OCR 和匹配逻辑，方便后续替换
 
