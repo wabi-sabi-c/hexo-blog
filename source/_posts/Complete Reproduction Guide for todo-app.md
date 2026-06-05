@@ -2,7 +2,7 @@
 title: Complete Reproduction Guide for todo-app
 date: 2026-06-03 17:50:20
 tags: [Python Project]
-categories: [自学记录]
+categories: [ToDo]
 ---
 
 # todo项目复现指南
